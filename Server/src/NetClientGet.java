@@ -10,7 +10,7 @@ public class NetClientGet {
     	try {
     		ReadRESTAPI readRESTAPI = new ReadRESTAPI();
     		
-    		Naming.rebind("rmi://localhost/ABC", readRESTAPI);
+    		Naming.rebind("rmi://localhost/RMIServer", readRESTAPI);
     		
 //    		Registry registry = LocateRegistry.getRegistry();
 //    		registry.bind("Service", clientGet);

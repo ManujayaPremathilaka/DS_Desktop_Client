@@ -6,6 +6,21 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/json-20190722.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/jackson-annotations-2.4.3.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/jackson-core-2.4.3.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/jackson-databind-2.4.3.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/javax.mail.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/jaxb-api-2.2.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/jjwt-0.4.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/joda-time-2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/slf4j-api-1.7.6.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/stax-api-1.0-2.jar"/>
+	<classpathentry kind="lib" path="/Users/applefactory/git/ds_desktop_client/Server/Jar/twilio-7.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
