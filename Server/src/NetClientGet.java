@@ -12,9 +12,6 @@ public class NetClientGet {
     		
     		Naming.rebind("rmi://localhost/RMIServer", readRESTAPI);
     		
-//    		Registry registry = LocateRegistry.getRegistry();
-//    		registry.bind("Service", clientGet);
-    		
     		System.out.println("Server started");
     	} catch (RemoteException | MalformedURLException e) {
 			// TODO: handle exception
