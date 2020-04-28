@@ -10,6 +10,7 @@ public class NetClientGet {
     	try {
     		ReadRESTAPI readRESTAPI = new ReadRESTAPI();
     		
+    		//binding the readRESTAPI object to the RMI
     		Naming.rebind("rmi://localhost/RMIServer", readRESTAPI);
     		
     		System.out.println("Server started");

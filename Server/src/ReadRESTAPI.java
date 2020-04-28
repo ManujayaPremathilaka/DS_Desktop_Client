@@ -38,6 +38,7 @@ public class ReadRESTAPI extends UnicastRemoteObject implements ServerService{
 		// TODO Auto-generated constructor stub
 	}
 
+	//getting all the details from the API as a JSON object
 	public String readRESTAPI() {
 		String output = null;
 		
@@ -47,16 +48,16 @@ public class ReadRESTAPI extends UnicastRemoteObject implements ServerService{
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
+            
+            //handling the error
             if (conn.getResponseCode() != 200) {
-                throw new RuntimeException("Failed : HTTP Error code : "
-                        + conn.getResponseCode());
+                throw new RuntimeException("Failed : HTTP Error code : "+ conn.getResponseCode());
             }
+            
+            //reading the response
             InputStreamReader in = new InputStreamReader(conn.getInputStream());
             BufferedReader br = new BufferedReader(in);
             output = br.readLine();
-            
-
-            System.out.println(output);
 
             conn.disconnect();
 
@@ -69,7 +70,7 @@ public class ReadRESTAPI extends UnicastRemoteObject implements ServerService{
 	
 	public void addSensor(int floorNo, String roomNo) {
 		
-		
+		//adding the values to a JSON object
 		String POST_PARAMS = "{\n" + "\"floorNo\":"+"\""+floorNo+"\",\r\n" +
 		        "    \"roomNo\":"+"\""+roomNo+"\",\r\n" +
 		        "    \"smokeLevel\":"+"\""+0+"\",\r\n" +
@@ -77,40 +78,29 @@ public class ReadRESTAPI extends UnicastRemoteObject implements ServerService{
 		        "	\"status\": \"Inactive\"" + "\n}";
 		
 		try {
-			URL url = new URL("http://localhost:8000/api/sensors");
+			URL url = new URL("http://localhost:8000/api/sensors"); //url to post the values
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Content-Type", "application/json");
 			conn.setRequestProperty("Accept", "application/json");
 			conn.setDoOutput(true);
 			
+			//sending the values as a JSON object
 			OutputStream outputStream = conn.getOutputStream();
 			outputStream.write(POST_PARAMS.getBytes());
 			outputStream.flush();
 			outputStream.close();
 			
+			//printing the response code and response message
 			int responseCode = conn.getResponseCode();
 		    System.out.println("POST Response Code :  " + responseCode);
 		    System.out.println("POST Response Message : " + conn.getResponseMessage());
-		    if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
-		        BufferedReader in = new BufferedReader(new InputStreamReader(
-		            conn.getInputStream()));
-		        String inputLine;
-		        StringBuffer response = new StringBuffer();
-		        while ((inputLine = in .readLine()) != null) {
-		            response.append(inputLine);
-		        } in .close();
-		        // print result
-		        System.out.println(response.toString());
-		    } else {
-		        System.out.println("POST NOT WORKED");
-		    }
-			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}//your url i.e fetch data from .
+		}
 		
 	}
 
@@ -118,41 +108,32 @@ public class ReadRESTAPI extends UnicastRemoteObject implements ServerService{
 	public void editSensor(HashMap<String, String> row) throws RemoteException {
 		// TODO Auto-generated method stub
 		
+		//adding the values to a JSON object
 		String PUT_PARAMS = "{\n" + "\"Id\":"+"\""+row.get("id")+"\",\r\n" +
 		        "    \"roomNo\":"+"\""+row.get("roomNo")+"\",\r\n" +
 		        "    \"floorNo\":"+"\""+row.get("floorNo")+"\",\r\n" +
 		        "	\"status\":"+"\""+ row.get("status") +"\"\n}";
 		
 		try {
-			URL url = new URL("http://localhost:8000/api/sensors/desktopPut");
+			URL url = new URL("http://localhost:8000/api/sensors/desktopPut"); //url to put the values
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
 			conn.setRequestMethod("PUT");
 			conn.setRequestProperty("Content-Type", "application/json");
 			conn.setRequestProperty("Accept", "application/json");
 			conn.setDoOutput(true);
 			
+			//sending the value as a JSON object
 			OutputStream outputStream = conn.getOutputStream();
 			outputStream.write(PUT_PARAMS.getBytes());
 			outputStream.flush();
 			outputStream.close();
 			
+			//printing the response code and the message
 			int responseCode = conn.getResponseCode();
 		    System.out.println("POST Response Code :  " + responseCode);
 		    System.out.println("POST Response Message : " + conn.getResponseMessage());
-		    if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
-		        BufferedReader in = new BufferedReader(new InputStreamReader(
-		            conn.getInputStream()));
-		        String inputLine;
-		        StringBuffer response = new StringBuffer();
-		        while ((inputLine = in .readLine()) != null) {
-		            response.append(inputLine);
-		        } in .close();
-		        // print result
-		        System.out.println(response.toString());
-		    } else {
-		        System.out.println("POST NOT WORKED");
-		    }
-			
+		
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -165,7 +146,7 @@ public class ReadRESTAPI extends UnicastRemoteObject implements ServerService{
 		System.out.println(messageBody);
 		
 		sendMail(reciever, messageBody);
-		sendSMS(messageBody);
+		//sendSMS(messageBody);
 		
 	}
 	
@@ -183,7 +164,7 @@ public class ReadRESTAPI extends UnicastRemoteObject implements ServerService{
 	      // creating session object to get properties 
 	      Session session = Session.getDefaultInstance(properties, new Authenticator() {
 		  
-	    	  protected PasswordAuthentication getPasswordAuthentication() {
+	    	protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication("test.purpose.lanka@gmail.com", "Test_purpose123");
 			}
 	      }); 
